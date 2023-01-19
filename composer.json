@@ -1,0 +1,12 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Armored\\Source\\": "src",
+      "Armored\\Config\\": "config"
+    }
+  },
+  "require": {
+    "ext-mysqli": "*",
+    "ext-pdo": "*"
+  }
+}
