@@ -14,6 +14,9 @@ class HomeController
 {
     public function display()
     {
+        echo "<a href='./'>Home</a><br>";
+        echo "<a href='./single'>Single Tank</a><br>";
+        echo "<a href='./list'>List of all Tanks</a><br>";
         $tankModel1 = new Tank(new Note(new Modern));
         $tankModel1->getTankByName('M1A1 Abrams');
 
@@ -28,6 +31,9 @@ class HomeController
         $tank1 = new TankController($tankModel1, $tankView);
         $tank2 = new TankController($tankModel2, $tankView);
         $tank3 = new TankController($tankModel3, $tankView);
+
+
+
 
         $tank1->showTank();
 

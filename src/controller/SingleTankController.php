@@ -5,26 +5,20 @@ namespace Armored\Source\controller;
 use Armored\Source\classes\TankRepository;
 use Armored\Source\model\Tank;
 use Armored\Source\model\TankInterface;
+use Armored\Source\partials\Modern;
+use Armored\Source\partials\Note;
+use Armored\Source\partials\WW2;
 use Armored\Source\view\SingleTankView;
 
 class SingleTankController
 {
-    private $model;
-    private $view;
-
-    public function __construct(TankInterface $model, SingleTankView $view)
-    {
-        $this->model = new Tank;
-        $this->model->getTankByName('T-34');
-        $this->view = new SingleTankView();
-    }
     public function showTank() : void
     {
-        $this->view->displaySingleTankChart(
-            $this->model->getName(),
-            $this->model->getCountry(),
-            $this->model->getProductionStart(),
-            $this->model->getProductionEnd(),
-        );
+        $tankModel1 = new Tank(new Note(new Modern));
+        $tankModel1->getTankByName('M1A1 Abrams');
+        $tankView = new SingleTankView();
+        $tank1 = new TankController($tankModel1, $tankView);
+
+        $tank1->showTank();
     }
 }

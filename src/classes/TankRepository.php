@@ -11,9 +11,10 @@ class TankRepository
     public static function getTankData() {
 
         $conn = Config::getConfig();
-        $query = "SELECT * FROM Tank INNER JOIN Countries ON Tank.origin_country = Countries.id";
+        $query = "SELECT * FROM Tank INNER JOIN Countries ON Tank.origin_country = Countries.country_id";
         $res = $conn->query($query);
         foreach ($res as $singleTank) :
+            $id = $singleTank['id'];
             if ($singleTank['production_end']) :
                 $productionEnd = $singleTank['production_end'];
             else :
@@ -21,7 +22,7 @@ class TankRepository
             endif;
 
             $single = [
-                "tankId" => $singleTank['id'],
+                "tankId" => $id,
                 "name" => $singleTank['name'],
                 "country_name" => $singleTank['country_name'],
                 "production_start" => $singleTank['production_start'],
